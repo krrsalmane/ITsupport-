@@ -36,5 +36,10 @@ public class PanneService {
                 })
                 .orElse(null);
     }
+
+
+    public void deletePanne(Long id) {
+        panneRepository.deleteById(id);
+    }
 }
 
