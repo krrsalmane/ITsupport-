@@ -9,7 +9,6 @@ import java.util.Optional;
 
 @Service
 public class PanneService {
-
     private final PanneRepository panneRepository;
 
     public PanneService(PanneRepository panneRepository) {
@@ -27,7 +26,6 @@ public class PanneService {
     public Panne addPanne(Panne panne) {
         return panneRepository.save(panne);
     }
-
 
 }
 
