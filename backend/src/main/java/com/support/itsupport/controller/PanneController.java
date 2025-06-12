@@ -34,6 +34,14 @@ public class PanneController {
         return panneService.addPanne(panne);
     }
 
+    @PutMapping("/{id}")
+    public Panne updatePanne(@PathVariable Long id, @RequestBody Panne panne) {
+        return panneService.updatePanne(id, panne);
+    }
 
+    @DeleteMapping("/{id}")
+    public void deletePanne(@PathVariable Long id) {
+        panneService.deletePanne(id);
+    }
 }
 

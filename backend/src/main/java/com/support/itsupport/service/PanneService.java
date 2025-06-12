@@ -27,5 +27,19 @@ public class PanneService {
         return panneRepository.save(panne);
     }
 
+    public Panne updatePanne(Long id, Panne updatedPanne) {
+        return panneRepository.findById(id)
+                .map(panne -> {
+                    panne.setNom(updatedPanne.getNom());
+                    panne.setDescription(updatedPanne.getDescription());
+                    return panneRepository.save(panne);
+                })
+                .orElse(null);
+    }
+
+
+    public void deletePanne(Long id) {
+        panneRepository.deleteById(id);
+    }
 }
 
