@@ -18,6 +18,10 @@ public class PanneController {
         this.panneService = panneService;
     }
 
+    @GetMapping
+    public List<Panne> getAllPannes() {
+        return panneService.getAllPannes();
+    }
 
 
     @GetMapping("/{id}")
