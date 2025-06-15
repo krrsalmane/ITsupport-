@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">{{ isEditMode ? 'Modifier Panne' : 'Ajouter Panne' }}</h2>
+  <form [formGroup]="panneForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom</label>
+      <input
+        type="text"
+        id="nom"
+        formControlName="nom"
+        class="form-control"
+        [class.is-invalid]="nomControl?.invalid && (nomControl?.touched || nomControl?.dirty)"
+      >
+      <div *ngIf="nomControl?.invalid && (nomControl?.touched || nomControl?.dirty)" class="invalid-feedback">
+        Le nom est requis et doit contenir au moins 3 caractères.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        class="form-control"
+        rows="4"
+        [class.is-invalid]="descriptionControl?.invalid && (descriptionControl?.touched || descriptionControl?.dirty)"
+      ></textarea>
+      <div *ngIf="descriptionControl?.invalid && (descriptionControl?.touched || descriptionControl?.dirty)" class="invalid-feedback">
+        La description est requise et doit contenir au moins 10 caractères.
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary me-2" [disabled]="panneForm.invalid">
+        {{ isEditMode ? 'Mettre à jour' : 'Ajouter' }}
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="onCancel()">Annuler</button>
+    </div>
+  </form>
+</div>

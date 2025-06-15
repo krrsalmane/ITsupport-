@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Liste des Pannes</h2>
+  <button (click)="addPanne()" class="btn btn-primary mb-3">Ajouter une Panne</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let panne of pannes">
+        <td>{{ panne.id }}</td>
+        <td>{{ panne.nom }}</td>
+        <td>{{ panne.description }}</td>
+        <td>
+          <button (click)="editPanne(panne.id)" class="btn btn-warning btn-sm">Modifier</button>
+          <button (click)="deletePanne(panne.id)" class="btn btn-danger btn-sm">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
