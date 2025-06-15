@@ -1,0 +1,131 @@
+<div class="register-container">
+  <div class="register-card">
+    <div class="register-header">
+      <i class="fas fa-laptop-code"></i>
+      <h1>IT Solutions</h1>
+      <p>Créer un compte</p>
+    </div>
+
+    <form #registerForm="ngForm" (ngSubmit)="register()" class="register-form" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            name="firstName"
+            placeholder="Prénom"
+            [(ngModel)]="user.firstName"
+            #firstName="ngModel"
+            required
+            minlength="2"
+          />
+          <div class="error-message" *ngIf="firstName.invalid && firstName.touched">
+            Veuillez entrer votre prénom (au moins 2 caractères)
+          </div>
+        </div>
+
+        <div class="form-group">
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Nom"
+            [(ngModel)]="user.lastName"
+            #lastName="ngModel"
+            required
+            minlength="2"
+          />
+          <div class="error-message" *ngIf="lastName.invalid && lastName.touched">
+            Veuillez entrer votre nom (au moins 2 caractères)
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <i class="fas fa-envelope"></i>
+        <input
+          type="email"
+          name="email"
+          placeholder="Adresse email"
+          [(ngModel)]="user.email"
+          #email="ngModel"
+          required
+          email
+        />
+        <div class="error-message" *ngIf="email.invalid && email.touched">
+          Veuillez entrer une adresse email valide
+        </div>
+      </div>
+
+      <div class="form-group">
+        <i class="fas fa-lock"></i>
+        <input
+          type="password"
+          name="password"
+          placeholder="Mot de passe"
+          [(ngModel)]="user.password"
+          #password="ngModel"
+          required
+          minlength="8"
+        />
+        <div class="password-strength">
+          <div
+            class="password-strength-bar"
+            [style.width]="
+              (user.password?.length || 0) >= 8 ? '100%' : (user.password?.length || 0) * 12.5 + '%'
+            "
+            [style.backgroundColor]="
+              (user.password?.length || 0) >= 8 ? 'green' : 'red'
+            "
+          ></div>
+        </div>
+        <div class="error-message" *ngIf="password.invalid && password.touched">
+          Le mot de passe doit contenir au moins 8 caractères
+        </div>
+      </div>
+
+      <div class="form-group">
+        <i class="fas fa-user-tag"></i>
+        <select
+          name="role"
+          [(ngModel)]="user.role"
+          #role="ngModel"
+          required
+        >
+          <option value="" disabled selected>Sélectionnez votre rôle</option>
+          <option value="user">Utilisateur</option>
+          <option value="technician">Technicien</option>
+          <option value="admin">Administrateur</option>
+        </select>
+        <div class="error-message" *ngIf="role.invalid && role.touched">
+          Veuillez sélectionner un rôle
+        </div>
+      </div>
+
+      <div class="terms-group">
+        <input
+          type="checkbox"
+          id="terms"
+          name="terms"
+          [(ngModel)]="user.terms"
+          #terms="ngModel"
+          required
+        />
+        <label for="terms">
+          J'accepte les <a href="#">conditions d'utilisation</a> et la <a href="#">politique de confidentialité</a>
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        class="register-btn"
+      >
+        S'inscrire
+      </button>
+    </form>
+
+    <div class="register-footer">
+      <p>Déjà inscrit ? <a href="">Se connecter</a></p>
+    </div>
+  </div>
+</div>
